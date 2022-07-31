@@ -1,7 +1,7 @@
 <template>
   <div class="w-[90vw] mx-auto mb-32">
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 content-start gap-6 ">
-        <MovieItem
+        <MovieCards
           v-for="(movie, index) in movies"
           :key="index"
           :title="movie.display_title === null ? 'No Title Found' : movie.display_title "
@@ -16,11 +16,10 @@
 
 
 <script>
-import MovieItem from "./MovieItem.vue";
+import MovieCards from "@/components/MovieCards.vue";
 
 export default {
-  components: { MovieItem },
-  props: ["movies"]
+  props: ["movies"],
+  components: { MovieCards },
 };
 </script>
-

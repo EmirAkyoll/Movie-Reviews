@@ -1,0 +1,59 @@
+
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap'); /* => font-family: 'UnifrakturMaguntia', cursive; */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); /* => font-family: 'Open Sans', sans-serif; */
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    width: 150px;
+    justify-content: space-around;
+    border-radius: 4px;
+    background-color: #111827;
+    color: #fff;
+    font-size: 16px;
+    padding: 9px;
+    margin-left: 14px;
+    position: absolute;
+    border-radius: 7px;
+    font-weight: 500;
+    top: 230px;
+  }
+  
+.button:hover{
+    cursor: pointer;
+    background-color: #333;
+  }
+
+.button-image {
+    max-height: 17px;
+}
+
+/* .lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;s
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */

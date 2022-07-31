@@ -1,43 +1,40 @@
 <template>
-  <the-header></the-header>
-  <the-filters @fetch-movies="handleFilters" ></the-filters>
+  <HeaderSection />
+  <FilterSection @fetch-movies="filtIt" />
   <PagesControll @page-control="fetchByPage" ></PagesControll>
-  <LoadingSpinner v-if="loading" />
-  <h1 v-else-if="!loading && errors" class="text-center font-bold text-4xl my-12">Something went wrong - try again later!</h1>
-  <movies-list v-else :movies="moviesData" ></movies-list>
+  <!-- <LoadingSpinner v-if="loading" /> -->
+  <!-- <h1 v-else-if="!loading && errors" class="text-center font-bold text-4xl my-12">Something went wrong - try again later!</h1> -->
+  <movies-list :movies="moviesData" ></movies-list>
 </template>
 
 <script>
-
-
-import TheHeader from './components/layout/TheHeader.vue'
-import TheFilters from './components/layout/TheFilters.vue'
-import MoviesList from './components/MoviesList.vue';
-import LoadingSpinner from './components/layout/LoadingSpinner.vue';
-import PagesControll from './components/layout/PagesControll.vue';
-import { API_KEY } from './config/constants';
+import HeaderSection from '@/components/HeaderSection.vue'
+import FilterSection from '@/components/FilterSection.vue'
+import MoviesList from '@/components/MoviesList.vue';
+// import LoadingSpinner from '@/components/LoadingSpinner.vue';
+import PagesControll from '@/components/PagesControll.vue';
+import { API_KEY } from '@/apikey.js';
 
 export default {
-  name: 'App',
   components: {
-    TheHeader,
-    TheFilters,
+    HeaderSection,
+    FilterSection,
     MoviesList,
-    LoadingSpinner,
-    PagesControll
+    // LoadingSpinner,
+    PagesControll,
 },
   data() {
     return {
       moviesData: [],
-      errors: null,
-      loading: false,
+      // errors: null,
+      // loading: false,
       offsetNum: 0,
       movieOrder: "by-opening-date",
-      query: ""
+      query: "",
     }
   },
   methods: {
-    handleFilters(movieOrder, search) {
+    filtIt(movieOrder, search) {
       this.fetchMovies(this.offsetNum, movieOrder, search);
     },
     fetchByPage(offsetNum) {
@@ -45,25 +42,11 @@ export default {
       this.fetchMovies(this.offsetNum, this.movieOrder, this.query);
     },
     async fetchMovies(offsetNum = 0, movieOrder = "by-opening-date", query = "") {
-        this.errors = null;
-        this.loading = true;
-        try {
+
             const response = await fetch(`https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key=${API_KEY}&offset=${offsetNum}&order=${movieOrder}&query=${query}`);
-            if (!response.ok) {
-                const error = new Error("Failed to fetch Data");
-                error.statusCode = 404;
-                throw error;
-            }
-            else {
+         
                 const data = await response.json();
                 this.moviesData = data.results;
-                this.loading = false;
-            }
-        } catch (error) {
-            console.log(error);
-            this.loading = false;
-            this.errors = "Something went wrong - try again later!";
-        }
     }
   },
   async mounted() {
@@ -72,5 +55,3 @@ export default {
   }
 }
 </script>
-
-
