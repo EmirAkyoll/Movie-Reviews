@@ -23,11 +23,9 @@
 
     <div class="window-form flex-center">
          <div class="selection-element flex-center">
-      <p
-        class="selection-element-text"
-        title="Eleştirmenlerin seçtikleri getirilsin?"
-      >
-        Seçkinler:
+      <p class="selection-element-text"
+         title="Eleştirmenlerin seçtikleri getirilsin?">
+       Seçkinler:
       </p>
       <input type="checkbox" title="Eleştirmenlerin seçtikleri getirilsin?" />
     </div>
@@ -53,6 +51,7 @@
     <div class="selection-element flex-center">
       <p class="selection-element-text">Gurme İmzası:</p>
       <select name="" id="">
+        <!-- <option v-for="reviewer in reviewersMain" :key="reviewer" value="">{{reviewer}}</option> -->
         <option value="Jeannette Catsoulis">Jeannette Catsoulis</option>
         <option value="Nicolas Rapold">Nicolas Rapold</option>
         <option value="A.O. Scott">A.O. Scott</option>
@@ -90,11 +89,13 @@
 </template>
 
 <script>
+
 export default {
   // props: ["reviewers"],
 
   data() {
     return {
+      // reviewers: [],
       // reviewersMain: [],
     };
   },
