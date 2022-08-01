@@ -21,7 +21,8 @@
       <img class="icon-close" src="@/images/icon-close.png" alt="iconclose" />
     </button>
 
-    <div class="selection-elements flex-center">
+    <div class="window-form flex-center">
+         <div class="selection-element flex-center">
       <p
         class="selection-element-text"
         title="Eleştirmenlerin seçtikleri getirilsin?"
@@ -31,17 +32,17 @@
       <input type="checkbox" title="Eleştirmenlerin seçtikleri getirilsin?" />
     </div>
 
-    <div class="selection-elements flex-center">
+    <div class="selection-element flex-center">
       <p class="selection-element-text">Sayfa Numarası:</p>
       <input type="text" class="page-number-textbox" />
     </div>
 
-    <div class="selection-elements flex-center">
+    <div class="selection-element flex-center">
       <p class="selection-element-text">Anahtar Kelime:</p>
       <input type="text" class="keyword-textbox" />
     </div>
 
-    <div class="selection-elements flex-center">
+    <div class="selection-element flex-center">
       <p class="selection-element-text">Listeleme Seçimi:</p>
       <select name="" id="">
         <option value="">Opening Date</option>
@@ -49,7 +50,7 @@
       </select>
     </div>
 
-    <div class="selection-elements flex-center">
+    <div class="selection-element flex-center">
       <p class="selection-element-text">Gurme İmzası:</p>
       <select name="" id="">
         <option value="Jeannette Catsoulis">Jeannette Catsoulis</option>
@@ -64,9 +65,9 @@
         <option value="Concepción de León">Concepción de León</option>
         <option value="Devika Girish">Devika Girish</option>
       </select>
-
     </div>
-      <button @click="closeWindow(); prot()" class="window-button">Apply</button>
+    </div>
+      <button @click="closeWindow" class="window-button">Apply</button>
 
     <div class="selection-window-gifs-downside flex-center">
       <img
@@ -102,7 +103,7 @@ export default {
     closeWindow() {
       this.$emit("close-window", false);
     },
-    prot(){prompt('abuzer kadayıf');}
+   
   },
 };
 </script> 
@@ -117,11 +118,17 @@ export default {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 110px;
+  top: 65px;
   left: 560px;
   box-shadow: 0px 2px 50px -13px rgba(0, 0, 0, 0.65);
   border-radius: 2px;
-  /* justify-content: space-between; */
+  justify-content: space-between;
+}
+
+.selection-element{
+  margin: -5px;
+  outline: none;
+  border: none;
 }
 
 .page-number-textbox {
@@ -157,7 +164,7 @@ export default {
 
 .selection-window-gifs-downside {
   position: absolute;
-  bottom: 0.2px;
+  bottom: 0.5px;
 }
 
 .window-button{
@@ -165,5 +172,11 @@ export default {
   height: 30px;
   /* background-color: blanchedalmond; */
   cursor: pointer;
+  margin-top: 50px;
+}
+
+.window-form{
+  flex-direction: column;
+  /* justify-content: space-between; */
 }
 </style>

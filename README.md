@@ -25,9 +25,6 @@ Open [http://localhost:8080](http://localhost:8080) with your browser to see the
 * [Tailwind](https://tailwindcss.com/) - CSS framework
 
 
-## Docker
-Using docker compose run `docker-compose up`
-
 ## Live Demo
 Click [HERE](https://nyt-critics-picks.netlify.app) for demo
 

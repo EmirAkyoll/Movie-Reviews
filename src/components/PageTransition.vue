@@ -1,6 +1,5 @@
 <template>
      <div>
-
       <button
         v-show="offsetNum !== 0"
         @click="prevPage"
@@ -15,7 +14,6 @@
         Next Page
         <img class="button-image" src="@/images/directiontoright.png" alt="yonisaretisag"/>
       </button>
-
     </div>
 </template>
 
@@ -26,28 +24,22 @@ export default {
     emits: ['page-transition'],
     
     methods: {
-
        nextPage() {
             this.offsetNum += 20;
             this.$emit('page-transition', this.offsetNum);
         },
 
-        prevPage() {
-            if(this.offsetNum !== 0){
-                this.offsetNum -= 20;
-                this.$emit('page-transition', this.offsetNum);
+       prevPage() {
+          if(this.offsetNum !== 0){
+              this.offsetNum -= 20;
+              this.$emit('page-transition', this.offsetNum);
             }
         }
-},
-}
+    },
+  }
 </script>
 
 <style>
-.previous-button{
-  left: 140px;
-}
-
-.next-button{
-  right: 140px;
-}
+.previous-button{ left: 140px; }
+.next-button{ right: 140px; }
 </style>

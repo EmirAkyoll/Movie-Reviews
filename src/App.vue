@@ -1,17 +1,23 @@
 <template>
-  <div>
-    <DetailedSearch
-      @close-window="withDetail = $event"
-      v-show="withDetail"
-    ></DetailedSearch>
-    <HeaderSection></HeaderSection>
-    <FilterSection
-      @open-window="withDetail = $event"
-      @get-movies="filtIt"
-    ></FilterSection>
-    <PageTransition @page-transition="getPageWithNum"></PageTransition>
-    <MoviesSection :movies="moviesData"></MoviesSection>
-  </div>
+   <div>
+     <DetailedSearch
+       @close-window="withDetail = $event"
+       v-show="withDetail">
+     </DetailedSearch>
+
+    <div :class="{ blackout: withDetail }">
+     <HeaderSection></HeaderSection>
+     <FilterSection
+       @open-window="withDetail = $event"
+       @get-movies="filtIt">
+     </FilterSection>
+     <PageTransition 
+       v-if="!withDetail" 
+       @page-transition="getPageWithNum">
+     </PageTransition>
+     <MoviesSection :movies="moviesData"></MoviesSection>
+     </div>
+   </div>
 </template>
 
 <script>
@@ -70,12 +76,17 @@ export default {
     //   this.reviewers = reviewer.results;
     // },
   },
-   async mounted() {
-      document.title = "NYT Critic's Picks";
-      await this.getMovies();
-      // await this.getReviewers();
-    },
+  async mounted() {
+    document.title = "NYT Critic's Picks";
+    await this.getMovies();
+    // await this.getReviewers();
+  },
 };
 </script>
 
-<style></style>
+<style>
+.blackout{
+  filter: blur(2px);
+  transition: all 0.2s;
+}
+</style>
