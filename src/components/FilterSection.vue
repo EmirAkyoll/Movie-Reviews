@@ -1,70 +1,66 @@
 <template>
-  <div class="container mx-auto mb-8">
-    <div>
-      <div class="nav flex-center">
-        <div class="flex items-center p-4 space-x-2">
-          <span class="fa fa-search"></span>
-          <input
-            type="search"
-            name="search"
-            id="search"
-            placeholder="Search"
-            class="bg-gray-100 p-2 rounded-md"
-            @change="filter"
-            v-model.trim="search"
-          />
-        </div>
-        <div class="flex items-center p-4 space-x-2">
-          <label for="sortBy">Sort By: </label>
-          <select
-            name="sortBy"
-            id="sortBy"
-            v-model="movieOrder"
-            @change="filter"
-            class="rounded-md bg-gray-100 p-2 cursor-pointer">
+  <div class="nav flex-center">
 
-            <option value="by-opening-date">Opening Date</option>
-            <option value="by-publication-date">Publication Date</option>
-            <option value="by-title">Title</option>
-
-          </select>
-        </div>
-      </div>
+    <div class="search-nav flex-center">
+      <div class="search-without-details"><img class="buyutec" src="@/images/buyutec.png" alt="buyutec resmi" />
+      <input
+        type="search"
+        class="input-search"
+        @change="filtIt" 
+        name="search"
+        v-model="search"
+        placeholder="Search" /></div>
+        <button @click="openWindow" class="search-button">Detailed Search</button>
     </div>
+    
+    <div class="sort-nav flex-center">
+      <label class="sort-text" for="sortBy">Sort By: </label>
+      <select
+        class="sort-by-select"
+        @change="filtIt"
+        name="sortBy"
+        id="sortBy"
+        v-model="movieOrder">
+        <option value="by-opening-date">Opening Date</option>
+        <option value="by-publication-date">Publication Date</option>
+      </select>
+    </div>
+
   </div>
 </template>
 
-
 <script>
 export default {
-  emits: ["fetch-movies"],
+  components: {},
+  emits: ['get-movies', 'open-window'],
+
   data() {
     return {
       search: "",
       movieOrder: "by-opening-date",
+     
     };
   },
+  
   methods: {
-    filter(event) {
+
+    openWindow(){ this.$emit("open-window", true); },
+
+    filtIt(event) {
       const name = event.target.name;
       const value = event.target.value;
-      if (name === "search") {
-        this.search = value;
-      }
-      if (name === "sortBy") {
-        this.movieOrder = value;
-      }
 
-      this.$emit("fetch-movies", this.movieOrder, this.search);
+      if (name === "search") { this.search = value; }
+      if (name === "sortBy") { this.movieOrder = value; }
+
+      this.$emit("get-movies", this.movieOrder, this.search);
     },
   },
 };
 </script>
 
 <style>
-div.nav {
-  justify-content: space-around;
-}
+div.nav { justify-content: space-around; }
 
 .sort-text {
   font-size: 16px;
@@ -101,4 +97,15 @@ div.nav {
   max-height: 18px;
   margin-right: 5px;
 }
+
+.search-button{
+  width: 150px;
+  height: 40px;
+  margin-left: 25px;
+  border: none;
+  opacity: 0.8;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.search-button:active{ background-color: #fff; }
 </style>

@@ -1,12 +1,12 @@
 <template>
-
-    <div class="flex-center">
-        <h1 class="head-header flex-center">
-            <span class="first-header">The New York Times </span>
+  <div>
+    <a href="#">
+        <h1 class ="head-header flex-center">
+            <span class="first-header">The New Bort Times</span>
             <span class="second-header">Critic's Picks</span>
         </h1>
-    </div>
-
+    </a>
+  </div>
 </template>
 
 <script>
@@ -25,6 +25,7 @@ a{ text-decoration: none; }
 .first-header{
     font-family: 'UnifrakturMaguntia', cursive;
     margin-right: 15px;
+    font-weight: 900;
 }
 
 .second-header{
