@@ -20,37 +20,37 @@
     <button @click="closeWindow" class="icon-close">
       <img class="icon-close" src="@/images/icon-close.png" alt="iconclose" />
     </button>
-
+{{detailedQuery.theReviewer}}
     <div class="window-form flex-center">
-         <div class="selection-element flex-center">
+     <div class="selection-element flex-center">
       <p class="selection-element-text"
          title="Eleştirmenlerin seçtikleri getirilsin?">
        Seçkinler:
       </p>
-      <input type="checkbox" title="Eleştirmenlerin seçtikleri getirilsin?" />
-    </div>
+      <input v-model="detailedQuery.isThisExcellent" type="checkbox" title="Eleştirmenlerin seçtikleri getirilsin?" />
+     </div>
 
     <div class="selection-element flex-center">
       <p class="selection-element-text">Sayfa Numarası:</p>
-      <input type="text" class="page-number-textbox" />
+      <input v-model="detailedQuery.pageNumber" type="text" class="page-number-textbox" />
     </div>
 
     <div class="selection-element flex-center">
       <p class="selection-element-text">Anahtar Kelime:</p>
-      <input type="text" class="keyword-textbox" />
+      <input v-model="detailedQuery.keyWord" type="text" class="keyword-textbox" />
     </div>
 
     <div class="selection-element flex-center">
       <p class="selection-element-text">Listeleme Seçimi:</p>
-      <select name="" id="">
-        <option value="">Opening Date</option>
-        <option value="">Publication Date</option>
+      <select v-model="detailedQuery.listingSelection" name="" id="">
+        <option value="by-opening-date">Opening Date</option>
+        <option value="by-publication-date">Publication Date</option>
       </select>
     </div>
 
     <div class="selection-element flex-center">
       <p class="selection-element-text">Gurme İmzası:</p>
-      <select name="" id="">
+      <select v-model="detailedQuery.theReviewer" name="" id="">
         <!-- <option v-for="reviewer in reviewersMain" :key="reviewer" value="">{{reviewer}}</option> -->
         <option value="Jeannette Catsoulis">Jeannette Catsoulis</option>
         <option value="Nicolas Rapold">Nicolas Rapold</option>
@@ -66,7 +66,7 @@
       </select>
     </div>
     </div>
-      <button @click="closeWindow" class="window-button">Apply</button>
+      <button @click="sendSelections(), closeWindow()" class="window-button">Apply</button>
 
     <div class="selection-window-gifs-downside flex-center">
       <img
@@ -89,12 +89,24 @@
 </template>
 
 <script>
-
+  // if (this.detailedSearch.isThisExcellent == true) {
+  //     this.$emit("is-this-excellent", "Y");
+  // } 
+  // else{
+  //     this.$emit("is-this-excellent", "N");
+  // }
+  
 export default {
   // props: ["reviewers"],
-
-  data() {
+    data() {
     return {
+      detailedQuery: {
+        isThisExcellent: false,
+        pageNumber: null,
+        keyWord: null,
+        listingSelection: null,
+        theReviewer: null,
+      },
       // reviewers: [],
       // reviewersMain: [],
     };
@@ -105,13 +117,18 @@ export default {
       this.$emit("close-window", false);
     },
    
+    sendSelections(){
+      this.$emit("send-selections", this.detailedQuery);
+
+     
+    },
   },
 };
 </script> 
 
 <style>
 .selection-window {
-  width: 400px;
+  width: 430px;
   height: 550px;
   background-color: #fff;
   border: 1px solid black;
@@ -152,7 +169,7 @@ export default {
 }
 
 .window-gif {
-  width: 133px;
+  width: 143px;
   height: 103px;
   margin: 0;
   padding: 0px;
