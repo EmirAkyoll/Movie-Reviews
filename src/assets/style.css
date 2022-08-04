@@ -1,0 +1,35 @@
+
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap'); /* => font-family: 'UnifrakturMaguntia', cursive; */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); /* => font-family: 'Open Sans', sans-serif; */
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    width: 150px;
+    justify-content: space-around;
+    border-radius: 4px;
+    background-color: #111827;
+    color: #fff;
+    font-size: 16px;
+    padding: 9px;
+    margin-left: 14px;
+    position: absolute;
+    border-radius: 7px;
+    font-weight: 500;
+    top: 230px;
+  }
+  
+.button:hover{
+    cursor: pointer;
+    background-color: #333;
+  }
+
+.button-image {
+    max-height: 17px;
+}
+
