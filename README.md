@@ -31,8 +31,3 @@ Click [HERE](https://nyt-critics-picks.netlify.app) for demo
 ## Author
 
 [**Marwan Ahal**](https://www.soymarwan.com)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
