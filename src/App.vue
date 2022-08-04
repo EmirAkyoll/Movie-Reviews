@@ -13,7 +13,6 @@
         @open-window="withDetail = $event" 
         @get-movies="filtIt">
      </FilterSection>
-      <!-- {{ detailedSearch }} -->
      <PageTransition 
         v-if="!withDetail"
         @page-transition="getPageWithNum">
@@ -85,21 +84,11 @@ export default {
       const data = await response.json();
       this.moviesData = data.results;
     },
-
-    // async getReviewers(reviewers) {
-
-    //   const response = await fetch(`https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key=${API_KEY}&reviewers=${reviewers}`);
-
-    //   const reviewer = await response.json();
-    //   this.reviewers = reviewer.results;
-    // },
   },
 
   async mounted() {
     document.title = "NYT Critic's Picks";
     await this.getMovies();
-    // await this.getMoviesWithDetails();
-    // await this.getReviewers();
   },
 };
 </script>
