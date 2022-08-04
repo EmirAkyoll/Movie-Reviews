@@ -15,7 +15,3 @@ Open [http://localhost:8080](http://localhost:8080) with your browser to see the
 
 ## Live Demo
 Click [HERE](https://nyt-critics-picks.netlify.app) for demo
-
-## Author
-
-[**Marwan Ahal**](https://www.soymarwan.com)
