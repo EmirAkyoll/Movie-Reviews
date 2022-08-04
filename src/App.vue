@@ -13,7 +13,7 @@
         @open-window="withDetail = $event" 
         @get-movies="filtIt">
      </FilterSection>
-      {{ detailedSearch }}
+      <!-- {{ detailedSearch }} -->
      <PageTransition 
         v-if="!withDetail"
         @page-transition="getPageWithNum">
@@ -35,8 +35,6 @@ export default {
   data() {
     return {
       moviesData: [],
-      // reviewers: [],
-      // reviewersMain: [],
       offsetNum: 0,
       movieOrder: "by-opening-date",
       query: "",
@@ -78,9 +76,10 @@ export default {
                                 offsetNum = (this.detailedSearch.pageNumber*20-20),
                                 movieOrder = this.detailedSearch.listingSelection,
                                 reviewer = this.detailedSearch.theReviewer,
-                                query = this.detailedSearch.keyWord ){
+                                query = this.detailedSearch.keyWord 
+                                ){
       const response = await fetch(
-        `https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key=${API_KEY}&critics_pick=${criticPicks}offset=${offsetNum}&query=${query}&order=${movieOrder}&reviewers=${reviewer}`
+        `https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key=${API_KEY}&critics_pick=${criticPicks}&offset=${offsetNum}&query=${query}&order=${movieOrder}&reviewers=${reviewer}`
       );
 
       const data = await response.json();

@@ -20,53 +20,71 @@
     <button @click="closeWindow" class="icon-close">
       <img class="icon-close" src="@/images/icon-close.png" alt="iconclose" />
     </button>
-{{detailedQuery.theReviewer}}
+    <!-- {{ detailedQuery.isThisExcellent }} -->
     <div class="window-form flex-center">
-     <div class="selection-element flex-center">
-      <p class="selection-element-text"
-         title="Eleştirmenlerin seçtikleri getirilsin?">
-       Seçkinler:
-      </p>
-      <input v-model="detailedQuery.isThisExcellent" type="checkbox" title="Eleştirmenlerin seçtikleri getirilsin?" />
-     </div>
+      <div class="selection-element flex-center">
+        <p
+          class="selection-element-text"
+          title="Eleştirmenlerin seçtikleri getirilsin?"
+        >
+          Seçkinler:
+        </p>
+        <input
+          v-model="detailedQuery.isThisExcellent"
+          type="checkbox"
+          title="Eleştirmenlerin seçtikleri getirilsin?"
+        />
+      </div>
 
-    <div class="selection-element flex-center">
-      <p class="selection-element-text">Sayfa Numarası:</p>
-      <input v-model="detailedQuery.pageNumber" type="text" class="page-number-textbox" />
-    </div>
+      <div class="selection-element flex-center">
+        <p class="selection-element-text">Sayfa Numarası:</p>
+        <input
+          v-model="detailedQuery.pageNumber"
+          type="text"
+          class="page-number-textbox"
+        />
+      </div>
 
-    <div class="selection-element flex-center">
-      <p class="selection-element-text">Anahtar Kelime:</p>
-      <input v-model="detailedQuery.keyWord" type="text" class="keyword-textbox" />
-    </div>
+      <div class="selection-element flex-center">
+        <p class="selection-element-text">Anahtar Kelime:</p>
+        <input
+          v-model="detailedQuery.keyWord"
+          type="text"
+          class="keyword-textbox"
+        />
+      </div>
 
-    <div class="selection-element flex-center">
-      <p class="selection-element-text">Listeleme Seçimi:</p>
-      <select v-model="detailedQuery.listingSelection" name="" id="">
-        <option value="by-opening-date">Opening Date</option>
-        <option value="by-publication-date">Publication Date</option>
-      </select>
-    </div>
+      <div class="selection-element flex-center">
+        <p class="selection-element-text">Listeleme Seçimi:</p>
+        <select v-model="detailedQuery.listingSelection" name="" id="">
+          <option value="by-opening-date">Opening Date</option>
+          <option value="by-publication-date">Publication Date</option>
+        </select>
+      </div>
 
-    <div class="selection-element flex-center">
-      <p class="selection-element-text">Gurme İmzası:</p>
-      <select v-model="detailedQuery.theReviewer" name="" id="">
-        <!-- <option v-for="reviewer in reviewersMain" :key="reviewer" value="">{{reviewer}}</option> -->
-        <option value="Jeannette Catsoulis">Jeannette Catsoulis</option>
-        <option value="Nicolas Rapold">Nicolas Rapold</option>
-        <option value="A.O. Scott">A.O. Scott</option>
-        <option value="Ben Kenigsberg">Ben Kenigsberg</option>
-        <option value="Beandrea July">Beandrea July</option>
-        <option value="Amy Nicholson">Amy Nicholson</option>
-        <option value="Beatrice Loayza">Beatrice Loayza</option>
-        <option value="Glenn Kenny">Glenn Kenny</option>
-        <option value="Calum Marsh">Calum Marsh</option>
-        <option value="Concepción de León">Concepción de León</option>
-        <option value="Devika Girish">Devika Girish</option>
-      </select>
+      <div class="selection-element flex-center">
+        <p class="selection-element-text">Gurme İmzası:</p>
+        <select v-model="detailedQuery.theReviewer" name="" id="">
+          <!-- <option v-for="reviewer in reviewersMain" :key="reviewer" value="">{{reviewer}}</option> -->
+          <option value="Jeannette Catsoulis">Jeannette Catsoulis</option>
+          <option value="Nicolas Rapold">Nicolas Rapold</option>
+          <option value="A.O. Scott">A.O. Scott</option>
+          <option value="Ben Kenigsberg">Ben Kenigsberg</option>
+          <option value="Beandrea July">Beandrea July</option>
+          <option value="Amy Nicholson">Amy Nicholson</option>
+          <option value="Beatrice Loayza">Beatrice Loayza</option>
+          <option value="Glenn Kenny">Glenn Kenny</option>
+          <option value="Calum Marsh">Calum Marsh</option>
+          <option value="Concepción de León">Concepción de León</option>
+          <option value="Devika Girish">Devika Girish</option>
+        </select>
+      </div>
     </div>
-    </div>
-      <button @click="sendSelections(), closeWindow()" class="window-button">Apply</button>
+    <button
+      @click="sendSelections(), closeWindow()"
+      class="window-button flex-center">
+      Apply
+    </button>
 
     <div class="selection-window-gifs-downside flex-center">
       <img
@@ -89,16 +107,15 @@
 </template>
 
 <script>
-  // if (this.detailedSearch.isThisExcellent == true) {
-  //     this.$emit("is-this-excellent", "Y");
-  // } 
-  // else{
-  //     this.$emit("is-this-excellent", "N");
-  // }
-  
+// if (this.detailedSearch.isThisExcellent == true) {
+//     this.$emit("is-this-excellent", "Y");
+// }
+// else{
+//     this.$emit("is-this-excellent", "N");
+// }
+
 export default {
-  // props: ["reviewers"],
-    data() {
+  data() {
     return {
       detailedQuery: {
         isThisExcellent: false,
@@ -107,20 +124,16 @@ export default {
         listingSelection: null,
         theReviewer: null,
       },
-      // reviewers: [],
-      // reviewersMain: [],
     };
   },
 
   methods: {
+    sendSelections() {
+      this.$emit("send-selections", this.detailedQuery);
+    },
+
     closeWindow() {
       this.$emit("close-window", false);
-    },
-   
-    sendSelections(){
-      this.$emit("send-selections", this.detailedQuery);
-
-     
     },
   },
 };
@@ -143,7 +156,7 @@ export default {
   justify-content: space-between;
 }
 
-.selection-element{
+.selection-element {
   margin: -5px;
   outline: none;
   border: none;
@@ -185,15 +198,25 @@ export default {
   bottom: 0.5px;
 }
 
-.window-button{
-  width: 100px;
-  height: 30px;
-  /* background-color: blanchedalmond; */
+.window-button {
+  height: 35px;
   cursor: pointer;
   margin-top: 50px;
+  width: 150px;
+  border-radius: 4px;
+  background-color: #111827;
+  color: #fff;
+  font-size: 16px;
+  padding: 9px;
+  border-radius: 7px;
+  font-weight: 500;
 }
+.window-button:hover{
+    cursor: pointer;
+    background-color: #333;
+  }
 
-.window-form{
+.window-form {
   flex-direction: column;
   /* justify-content: space-between; */
 }
