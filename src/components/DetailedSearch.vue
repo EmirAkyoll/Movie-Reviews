@@ -20,13 +20,12 @@
     <button @click="closeWindow" class="icon-close">
       <img class="icon-close" src="@/images/icon-close.png" alt="iconclose" />
     </button>
-    <!-- {{ detailedQuery.isThisExcellent }} -->
+    
     <div class="window-form flex-center">
       <div class="selection-element flex-center">
-        <p
-          class="selection-element-text"
-          title="Eleştirmenlerin seçtikleri getirilsin?"
-        >
+        
+        <p class="selection-element-text"
+           title="Eleştirmenlerin seçtikleri getirilsin?">
           Seçkinler:
         </p>
         <input
@@ -65,7 +64,6 @@
       <div class="selection-element flex-center">
         <p class="selection-element-text">Gurme İmzası:</p>
         <select v-model="detailedQuery.theReviewer" name="" id="">
-          <!-- <option v-for="reviewer in reviewersMain" :key="reviewer" value="">{{reviewer}}</option> -->
           <option value="Jeannette Catsoulis">Jeannette Catsoulis</option>
           <option value="Nicolas Rapold">Nicolas Rapold</option>
           <option value="A.O. Scott">A.O. Scott</option>
@@ -107,13 +105,6 @@
 </template>
 
 <script>
-// if (this.detailedSearch.isThisExcellent == true) {
-//     this.$emit("is-this-excellent", "Y");
-// }
-// else{
-//     this.$emit("is-this-excellent", "N");
-// }
-
 export default {
   data() {
     return {
