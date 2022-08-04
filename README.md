@@ -1,10 +1,6 @@
 # The NYT Critic's Picks
 
 A collection of movies Critic's Picks from The New York Times. Uses the NYT's REST API in order to gather the data.
-
-![nyt_api](https://user-images.githubusercontent.com/58397095/167318852-4f7c06b3-88d0-4bf3-b0ac-6434304ea3df.png)
-
-
 ## Getting Started
 
 1. Clone the repo: `git clone https://github.com/itsmar1/nyt-critics-picks.git`
