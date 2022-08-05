@@ -13,6 +13,3 @@ Open [http://localhost:8080](http://localhost:8080) with your browser to see the
 
 ## Tech Stack
 * [Vue.js](https://vuejs.org/) - The frontend framework used
-
-## Live Demo
-Click [HERE](https://nyt-critics-picks.netlify.app) for demo
